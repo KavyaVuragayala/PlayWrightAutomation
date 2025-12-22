@@ -20,6 +20,13 @@ test("Usage of Static Select Dropdown ",async({page})=>
     await dropdown.selectOption("consult");
 
     await page.locator("#terms").click();
+   // await page.locator("#terms").uncheck();                             to uncheck the checked box , assertion is not possible for uncheck
+
+
+   const documentLink = page.locator("[href*='documents-request']");
+   await expect(documentLink).toHaveAttribute("class","blinkingText");
+   
+
     await page.locator("#signInBtn").click();
 
    // await page.pause();   
