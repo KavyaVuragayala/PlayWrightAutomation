@@ -23,7 +23,10 @@ export default defineConfig ({
   use: {
    
     browserName:'chromium',
-    headless : false
+    headless : false,
+    screenshot : 'on',
+    trace : 'on' ,            // logs
+
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     
