@@ -19,7 +19,7 @@ test('Extracting List of Titles', async({browser})=>
     await lastName.fill("jesh");
 
     const email = page.locator("[placeholder='email@example.com']");
-    await email.fill("alice.jesh@gmail.com");
+    await email.fill("alicejeshvika69@gmail.com");
 
     const phoneNumber = page.locator("#userMobile");
     await phoneNumber.fill("9876543210");
@@ -28,10 +28,10 @@ test('Extracting List of Titles', async({browser})=>
     await gender.click();
 
     const register_password = page.locator("#userPassword");
-    await register_password.fill("password123");
+    await register_password.fill("Alice@1234567890");
 
     const confirm_password = page.locator("#confirmPassword");
-    await confirm_password.fill("password123");
+    await confirm_password.fill("Alice@1234567890");
 
     const checkbox = page.locator("[type='checkbox']");
     await checkbox.click();
