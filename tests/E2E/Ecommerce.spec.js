@@ -20,7 +20,7 @@ test("End to End Flow of Ecommerce Website",async({browser})=>
     await password.fill("Alice@1234567890");
     await loginBtn.click();
 
-    await page.waitForLoadState('networkidle');
+   // await page.waitForLoadState('networkidle');
     await page.locator(".card-body b").first().waitFor();
 
 
@@ -54,12 +54,18 @@ test("End to End Flow of Ecommerce Website",async({browser})=>
     */
 
 
-    const shippingEmail = await page.locator("div:has-text('Shipping Information') input").inputValue();
+  await page.locator(".payment__shipping").waitFor();
+
+const shippingEmail = await page
+  .locator(".payment__shipping input:not([placeholder])")
+  .inputValue();
+
+    
     expect(loginEmail).toBe(shippingEmail);
 
     await page.locator("[placeholder*='Select Country']").pressSequentially("ind", { delay: 100 });
     const dropdown = page.locator("[class*='ta-result']");
-    dropdown.waitFor();
+    await dropdown.waitFor();
 
     const dropdownCount = await dropdown.locator("button").count();
     for(let i=0; i<dropdownCount; ++i)
@@ -72,14 +78,33 @@ test("End to End Flow of Ecommerce Website",async({browser})=>
 
     }
 
+    await expect(page.locator(".user__name [type='text']").first()).toHaveText(loginEmail);
+
+    await page.locator(".action__submit").click();
+
+    await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
+
+    const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
+    console.log(orderId);
 
 
+    await page.locator("button[routerlink*='/dashboard/myorders']").click();
+    await page.locator("tbody").waitFor();
 
+    const rows= page.locator("tbody tr");
 
+    for(let i=0; i<await rows.count();i++){
 
-    await page.pause();
+       const rowOrderID = await rows.locator("th").nth(i).textContent();
+       if(orderId.includes(rowOrderID)){
 
+        await rows.locator("button").first().click();
+        break;
 
-
+       }
+    }
     
+    const orderId_details = await page.locator(".col-text").textContent();
+    expect(orderId.includes(orderId_details)).toBeTruthy();
+
 });
