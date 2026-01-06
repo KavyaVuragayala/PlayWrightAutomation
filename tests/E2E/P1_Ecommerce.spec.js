@@ -16,7 +16,7 @@ test("End to End Flow of Ecommerce Website",async({browser})=>
 
    
     await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
-    await email.fill("alicejeshvika69@gmail.com");
+    await email.fill(loginEmail);
     await password.fill("Alice@1234567890");
     await loginBtn.click();
 
