@@ -25,7 +25,7 @@ export default defineConfig ({
     browserName:'chromium',
     headless : false,
     screenshot : 'on',
-    trace : 'on' ,            // logs
+    trace : 'on' ,            // logs -> on, off, retain-on-failure( can be usd to save memory)
 
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
