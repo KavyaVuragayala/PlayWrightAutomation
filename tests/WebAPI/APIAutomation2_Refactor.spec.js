@@ -11,7 +11,7 @@ test.beforeAll( async()=>
     //Login API 
      const apiContext = await request.newContext();
      const apiUtils = new APIUtils(apiContext,loginPayload);
-    response = apiUtils.createOrder(orderPayload);
+    response = await apiUtils.createOrder(orderPayload);
 
      
 })

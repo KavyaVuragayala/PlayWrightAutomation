@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "tests" : "npx playwright test tests/WebAPI/P1_InjectBrowser.spec.js --headed"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

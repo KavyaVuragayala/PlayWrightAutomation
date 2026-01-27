@@ -14,7 +14,7 @@ export class APIUtils{
             { 
                 data : this.loginPayload
             } 
-         )// 200,201
+         );// 200,201
     
          const loginResponseJson = await loginResponse.json();
          const token = loginResponseJson.token;
