@@ -63,7 +63,7 @@ test("Intercept Network Response Calls ",async({page})=>
 
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/694575f032ed8658713f44ad",
        async route => {
-            // interception the response 
+            // intercepting the response 
             const response = await page.request.fetch(route.request());       
             let body = JSON.stringify(fakePayloadOrders);
             route.fulfill()
